@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Reserva - GR Dance</title>
+    <link rel="stylesheet" href="/css/banner.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="/css/servicios.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+    <div class="services full-screen-bg">
+        <div class="form-container">
+            <h1>Formulario de Reserva</h1>
+            <form id="reservation-form">
+                <label for="full-name">Nombre Completo:</label>
+                <input type="text" id="full-name" name="full-name" required>
+
+                <label for="id-number">Carnet de Identidad:</label>
+                <input type="text" id="id-number" name="id-number" required>
+
+                <label for="phone">Teléfono:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="event-address">Dirección del Evento:</label>
+                <input type="text" id="event-address" name="event-address" required>
+
+                <label for="artist-count">Cantidad de Artistas:</label>
+                <input type="number" id="artist-count" name="artist-count" min="1" required>
+
+                <label for="payment-method">Método de Pago:</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="tarjeta">Tarjeta</option>
+                    <option value="efectivo">Efectivo</option>
+                </select>
+
+                <label for="currency">Moneda:</label>
+                <select id="currency" name="currency" required>
+                    <option value="cup">CUP</option>
+                    <option value="usd">USD</option>
+                    <option value="eur">EUR</option>
+                </select>
+
+                <label for="event-date">Fecha del Evento:</label>
+                <input type="text" id="event-date" name="event-date" readonly required>
+
+                <label for="details">Detalles Adicionales:</label>
+                <textarea id="details" name="details" rows="4"></textarea>
+
+                <div class="cart-summary">
+                    <h3>Resumen de Compra</h3>
+                    <ul id="cart-items-summary"></ul>
+                    <p id="cart-total-summary">Total: $0.00</p>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn" onclick="window.location.href='/servicios'">Cancelar</button>
+                    <button type="submit" class="confirm-btn">Confirmar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/js/formulario.js" type="module"></script>
+</body>
+</html>

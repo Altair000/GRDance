@@ -1,0 +1,106 @@
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        top: 0;
+        left: 0;
+        flex-direction: row;
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+    .sidebar a {
+        padding: 10px;
+        font-size: 1rem;
+    }
+}
+
+/* Estilos para el botón de alternancia y el estado plegado */
+.sidebar.collapsed {
+    width: 60px; /* Ancho plegado */
+}
+
+.toggle-sidebar {
+    position: absolute;
+    top: 10px;
+    right: -40px; /* Posiciona el botón fuera de la barra lateral a la derecha */
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 0 5px 5px 0;
+    transition: background-color 0.3s, right 0.3s;
+}
+
+.toggle-sidebar:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .sidebar.collapsed {
+        width: 100%;
+        height: 40px; /* Ajusta la altura para pantallas pequeñas */
+        padding: 5px 0;
+    }
+
+    .toggle-sidebar {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 40px; /* Posiciona el botón debajo de la barra lateral en pantallas pequeñas */
+        border-radius: 5px;
+    }
+}
+
+/* Nuevos estilos para ocultar enlaces y ajustar el botón cuando está plegado */
+.sidebar.collapsed a {
+    display: none; /* Oculta los enlaces cuando la barra lateral está plegada */
+}
+
+.sidebar.collapsed .toggle-sidebar {
+    right: -40px; /* Mantiene el botón visible y ajustado al nuevo ancho */
+}
+
+@media (max-width: 768px) {
+    .sidebar.collapsed a {
+        display: none; /* Oculta los enlaces en pantallas pequeñas cuando está plegado */
+    }
+
+    .sidebar.collapsed .toggle-sidebar {
+        top: 0; /* Posiciona el botón dentro del área plegada */
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 5px;
+    }
+}

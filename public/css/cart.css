@@ -1,0 +1,25 @@
+.cart-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 3;
+    cursor: pointer;
+}
+
+.cart-icon svg {
+    width: 30px;
+    height: 30px;
+    fill: #ffc107; /* Amarillo, como en el PHP */
+}
+
+.badge {
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 5px 10px;
+    border-radius: 50%;
+    color: rgb(214, 194, 11);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
