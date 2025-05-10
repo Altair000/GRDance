@@ -8,7 +8,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = join(__filename, '..');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+const host = '0.0.0.0';
 
 // Middleware
 app.use(express.json());
@@ -41,6 +42,6 @@ app.get('/detalle-servicio', (req, res) => {
 // Ruta para formulario
 app.get('/formulario', (req, res) => res.sendFile('public/formulario.html', { root: '.' }));
 
-app.listen(port, () => {
+app.listen(port, host, () => {
     console.log(`Servidor corriendo en http://localhost:${port}`);
 });
