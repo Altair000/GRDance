@@ -1,0 +1,146 @@
+.references {
+    margin-left: 200px;
+    padding: 40px 20px;
+    background-image: url('/images/services_background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    position: relative;
+}
+
+.references::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Overlay oscuro para mejorar legibilidad */
+    z-index: 0;
+}
+
+.references > * {
+    position: relative;
+    z-index: 1;
+}
+
+.references h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+.awards-section, .activities-section {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.awards-section h2, .activities-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #e67e22;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.carousel {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.carousel-images {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    text-align: center;
+}
+
+.carousel-image {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    max-width: 600px;
+}
+
+.carousel-image.active {
+    opacity: 1;
+}
+
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 5px;
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.media-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.media-item {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.media-item img, .media-item video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .references {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .carousel {
+        max-width: 100%;
+    }
+
+    .carousel-images {
+        height: 300px;
+    }
+
+    .media-item {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}

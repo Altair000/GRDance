@@ -1,0 +1,100 @@
+.portfolio {
+    margin-left: 200px;
+    padding: 40px 20px;
+    background-image: url('/images/services_background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    position: relative;
+}
+
+.portfolio::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Overlay oscuro para mejorar legibilidad */
+    z-index: 0;
+}
+
+.portfolio > * {
+    position: relative;
+    z-index: 1;
+}
+
+.portfolio h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.member {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo semitransparente para el contenido */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.member-info {
+    flex: 1;
+}
+
+.member-info h2 {
+    font-size: 1.5rem;
+    margin: 0 0 10px;
+    color: #e67e22;
+    font-family: Arial, sans-serif;
+}
+
+.social-link {
+    display: block;
+    font-size: 1.1rem;
+    color: #1da1f2;
+    text-decoration: none;
+    margin-bottom: 5px;
+    font-family: Arial, sans-serif;
+}
+
+.social-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .portfolio {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .team-members {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .member {
+        max-width: 100%;
+    }
+}
