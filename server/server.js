@@ -42,6 +42,18 @@ app.get('/detalle-servicio', (req, res) => {
 // Ruta para formulario
 app.get('/formulario', (req, res) => res.sendFile('public/formulario.html', { root: '.' }));
 
+app.get('/conocenos', (req, res) => {
+    res.sendFile(join(__dirname, '../public', 'conocenos.html'));
+});
+
+app.get('/portafolio', (req, res) => {
+    res.sendFile(join(__dirname, '../public', 'portafolio.html'));
+});
+
+app.get('/referencias', (req, res) => {
+    res.sendFile(join(__dirname, '../public', 'referencias.html'));
+});
+
 app.listen(port, host, () => {
-    console.log(`Servidor corriendo en http://localhost:${port}`);
+    console.log(`Servidor corriendo en ${host}:${port}`);
 });
