@@ -1,34 +1,8 @@
-/* Estilo base para la barra lateral */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 60px; /* Altura inicial colapsada */
-    background: linear-gradient(90deg, #1a1a1a, #333); /* Fondo degradado elegante */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 1000;
-    transition: height 0.3s ease;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra para profundidad */
-}
-
-/* Estado colapsado en móviles */
-.sidebar.collapsed {
-    height: 60px; /* Solo muestra el botón toggle */
-}
-
-/* Estado abierto en móviles */
-.sidebar.open {
-    height: 250px; /* Altura expandida para mostrar los enlaces */
-}
-
-/* Estilo del botón toggle */
+/* Botón toggle fijo en la esquina superior izquierda */
 .toggle-sidebar {
-    position: absolute;
-    top: 15px;
-    left: 15px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
     background-color: #ffca28; /* Amarillo vibrante */
     color: #1a1a1a;
     border: none;
@@ -36,94 +10,106 @@
     cursor: pointer;
     padding: 8px 12px;
     border-radius: 5px;
+    z-index: 1001; /* Sobre el overlay */
     transition: background-color 0.3s ease;
-    z-index: 1001;
 }
 
 .toggle-sidebar:hover {
     background-color: #ffb300; /* Amarillo más oscuro al pasar el mouse */
 }
 
+/* Overlay para cerrar al hacer clic fuera */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+/* Barra lateral oculta a la izquierda */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background: linear-gradient(90deg, #1a1a1a, #333); /* Fondo degradado elegante */
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1001;
+    transform: translateX(-100%); /* Oculta a la izquierda inicialmente */
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5); /* Sombra a la derecha */
+}
+
+/* Barra visible al hacer clic */
+.sidebar.collapsed {
+    transform: translateX(0); /* Desliza a la posición visible */
+}
+
 /* Estilo de los enlaces */
 .sidebar a {
-    display: none; /* Ocultos cuando colapsado */
+    display: block;
     width: 80%;
-    margin: 10px auto;
+    margin: 15px auto;
     padding: 10px;
     text-align: center;
     text-decoration: none;
     color: white;
-    background-color: #444; /* Fondo para cada enlace */
+    background-color: #444;
     border-radius: 5px;
     font-size: 16px;
     font-weight: 500;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.sidebar.open a {
-    display: block; /* Mostrar enlaces cuando está abierto */
-}
-
 .sidebar a:hover {
-    background-color: #666; /* Fondo más claro al pasar el mouse */
-    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+    background-color: #666;
+    transform: scale(1.05);
 }
 
 .sidebar a.active {
-    background-color: #ffca28; /* Resaltar enlace activo */
+    background-color: #ffca28;
     color: #1a1a1a;
 }
 
 /* Contenido principal */
 .services {
-    margin-top: 60px; /* Espacio para la barra colapsada */
+    margin-left: 0; /* Sin margen por defecto */
     padding: 20px;
-    transition: margin-top 0.3s ease;
+    transition: margin-left 0.3s ease;
     min-height: 100vh;
 }
 
 .services.shifted {
-    margin-top: 250px; /* Más espacio cuando la barra está abierta */
+    margin-left: 250px; /* Espacio cuando la barra está visible */
 }
 
-/* Estilos para escritorio (ancho > 768px) */
+/* Ajustes para escritorio (opcional, si quieres comportamiento diferente) */
 @media (min-width: 769px) {
     .sidebar {
-        width: 250px;
-        height: 100%;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding-top: 80px;
+        transform: translateX(0); /* Visible por defecto en escritorio */
+        box-shadow: none; /* Sin sombra en escritorio */
     }
 
     .sidebar.collapsed {
-        width: 70px;
-    }
-
-    .sidebar.open {
-        width: 250px;
-        height: 100%;
-    }
-
-    .sidebar a {
-        display: block; /* Siempre visible en escritorio */
-        width: 80%;
-        margin: 15px auto;
-    }
-
-    .toggle-sidebar {
-        top: 20px;
-        left: auto;
-        right: -40px;
-        border-radius: 0 5px 5px 0;
+        transform: translateX(-100%); /* Oculta en escritorio al colapsar */
     }
 
     .services {
-        margin-top: 0;
-        margin-left: 250px;
+        margin-left: 0;
     }
 
     .services.shifted {
-        margin-left: 70px;
+        margin-left: 0; /* Ajustar según necesidad en escritorio */
     }
 }
