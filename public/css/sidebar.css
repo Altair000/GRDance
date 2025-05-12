@@ -2,89 +2,78 @@
     position: fixed;
     left: 0;
     top: 0;
-    height: 100%;
-    width: 200px;
+    height: 50px; /* Altura fija en móviles por defecto */
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.8);
-    padding-top: 60px;
+    padding: 5px 0;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     z-index: 2;
-    transition: width 0.3s ease, transform 0.3s ease;
+    transition: transform 0.3s ease, height 0.3s ease;
 }
 
 .sidebar.collapsed {
-    width: 60px;
+    height: 50px; /* Altura mínima visible */
 }
 
 .sidebar.open {
-    width: 200px;
+    height: 200px; /* Altura expandida para mostrar enlaces */
+    transform: translateY(0);
 }
 
 .toggle-sidebar {
     position: absolute;
-    top: 10px;
-    right: -40px;
+    top: 5px;
+    left: 10px; /* Botón a la izquierda en móviles */
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     border: none;
     font-size: 20px;
     cursor: pointer;
     padding: 5px 10px;
-    border-radius: 0 5px 5px 0;
-    transition: right 0.3s;
-    z-index: 3; /* Asegurar que esté encima de otros elementos */
+    border-radius: 5px;
+    z-index: 3;
 }
 
 .services {
-    margin-left: 200px;
-    transition: margin-left 0.3s ease;
-    min-height: 100vh;
+    margin-top: 50px; /* Espacio para la barra colapsada */
     padding: 20px;
+    transition: margin-top 0.3s ease;
 }
 
 .services.shifted {
-    margin-left: 60px;
+    margin-top: 0; /* Sin margen cuando se abre */
 }
 
-@media (max-width: 768px) {
+@media (min-width: 769px) {
     .sidebar {
-        width: 100%;
-        height: auto;
-        top: 0;
-        left: 0;
-        flex-direction: row;
-        justify-content: center;
-        padding: 10px 0;
-        transform: translateY(-100%); /* Oculta inicialmente */
-        background-color: rgba(0, 0, 0, 0.9); /* Ajuste de opacidad para visibilidad */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
-    }
-
-    .sidebar.open {
-        transform: translateY(0); /* Muestra al abrir */
-        height: auto; /* Asegura altura dinámica */
+        height: 100%;
+        width: 200px;
+        padding-top: 60px;
+        flex-direction: column;
     }
 
     .sidebar.collapsed {
-        height: 50px; /* Altura mínima visible */
-        transform: translateY(0); /* Siempre visible cuando colapsada */
-        padding: 5px 0;
+        width: 60px;
     }
 
-    .services {
-        margin-left: 0;
-        margin-top: 50px; /* Espacio para la barra colapsada */
-        transition: margin-top 0.3s ease;
-    }
-
-    .services.shifted {
-        margin-top: 0; /* Sin margen cuando se abre */
+    .sidebar.open {
+        width: 200px;
     }
 
     .toggle-sidebar {
-        top: 5px;
-        right: auto;
-        left: 10px; /* Mover a la izquierda en móviles */
-        border-radius: 5px;
+        top: 10px;
+        right: -40px;
+        left: auto;
+        border-radius: 0 5px 5px 0;
+    }
+
+    .services {
+        margin-left: 200px;
+        margin-top: 0;
+    }
+
+    .services.shifted {
+        margin-left: 60px;
     }
 }
