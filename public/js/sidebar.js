@@ -51,3 +51,8 @@ export function initSidebar() {
 document.addEventListener('DOMContentLoaded', () => {
     initSidebar();
 });
+
+export function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  sidebar.classList.toggle('active');
+}
