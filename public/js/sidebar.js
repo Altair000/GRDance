@@ -2,7 +2,7 @@ export function initSidebar() {
     console.log('Inicializando sidebar...');
     const sidebar = document.querySelector('.sidebar');
     const toggleButton = document.querySelector('.toggle-sidebar');
-    const mainContent = document.querySelector('.services');
+    const mainContent = document.querySelector('.main-content');
     const overlay = document.createElement('div');
     overlay.className = 'sidebar-overlay';
     document.body.appendChild(overlay);
