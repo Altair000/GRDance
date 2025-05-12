@@ -1,79 +1,129 @@
+/* Estilo base para la barra lateral */
 .sidebar {
     position: fixed;
-    left: 0;
     top: 0;
-    height: 50px; /* Altura fija en móviles por defecto */
+    left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 5px 0;
+    height: 60px; /* Altura inicial colapsada */
+    background: linear-gradient(90deg, #1a1a1a, #333); /* Fondo degradado elegante */
     display: flex;
-    justify-content: center;
-    z-index: 2;
-    transition: transform 0.3s ease, height 0.3s ease;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+    transition: height 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra para profundidad */
 }
 
+/* Estado colapsado en móviles */
 .sidebar.collapsed {
-    height: 50px; /* Altura mínima visible */
+    height: 60px; /* Solo muestra el botón toggle */
 }
 
+/* Estado abierto en móviles */
 .sidebar.open {
-    height: 200px; /* Altura expandida para mostrar enlaces */
-    transform: translateY(0);
+    height: 250px; /* Altura expandida para mostrar los enlaces */
 }
 
+/* Estilo del botón toggle */
 .toggle-sidebar {
     position: absolute;
-    top: 5px;
-    left: 10px; /* Botón a la izquierda en móviles */
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
+    top: 15px;
+    left: 15px;
+    background-color: #ffca28; /* Amarillo vibrante */
+    color: #1a1a1a;
     border: none;
-    font-size: 20px;
+    font-size: 24px;
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 8px 12px;
     border-radius: 5px;
-    z-index: 3;
+    transition: background-color 0.3s ease;
+    z-index: 1001;
 }
 
+.toggle-sidebar:hover {
+    background-color: #ffb300; /* Amarillo más oscuro al pasar el mouse */
+}
+
+/* Estilo de los enlaces */
+.sidebar a {
+    display: none; /* Ocultos cuando colapsado */
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: #444; /* Fondo para cada enlace */
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.sidebar.open a {
+    display: block; /* Mostrar enlaces cuando está abierto */
+}
+
+.sidebar a:hover {
+    background-color: #666; /* Fondo más claro al pasar el mouse */
+    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+}
+
+.sidebar a.active {
+    background-color: #ffca28; /* Resaltar enlace activo */
+    color: #1a1a1a;
+}
+
+/* Contenido principal */
 .services {
-    margin-top: 50px; /* Espacio para la barra colapsada */
+    margin-top: 60px; /* Espacio para la barra colapsada */
     padding: 20px;
     transition: margin-top 0.3s ease;
+    min-height: 100vh;
 }
 
 .services.shifted {
-    margin-top: 0; /* Sin margen cuando se abre */
+    margin-top: 250px; /* Más espacio cuando la barra está abierta */
 }
 
+/* Estilos para escritorio (ancho > 768px) */
 @media (min-width: 769px) {
     .sidebar {
+        width: 250px;
         height: 100%;
-        width: 200px;
-        padding-top: 60px;
         flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 80px;
     }
 
     .sidebar.collapsed {
-        width: 60px;
+        width: 70px;
     }
 
     .sidebar.open {
-        width: 200px;
+        width: 250px;
+        height: 100%;
+    }
+
+    .sidebar a {
+        display: block; /* Siempre visible en escritorio */
+        width: 80%;
+        margin: 15px auto;
     }
 
     .toggle-sidebar {
-        top: 10px;
-        right: -40px;
+        top: 20px;
         left: auto;
+        right: -40px;
         border-radius: 0 5px 5px 0;
     }
 
     .services {
-        margin-left: 200px;
         margin-top: 0;
+        margin-left: 250px;
     }
 
     .services.shifted {
-        margin-left: 60px;
+        margin-left: 70px;
     }
 }
