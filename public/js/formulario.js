@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 Fecha: ${formData.event_date}
                 Detalles: ${formData.details || 'No especificados'}
             `);
-            const whatsappUrl = `https://wa.me/+5353506760?text=${whatsappMessage}`;
+            const whatsappUrl = `https://wa.me/+5353506763?text=${whatsappMessage}`;
             window.location.href = whatsappUrl;
         } catch (err) {
             console.error('Error al confirmar la reserva:', err);
