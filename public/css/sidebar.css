@@ -9,30 +9,21 @@
     display: flex;
     flex-direction: column;
     z-index: 2;
-    transition: width 0.3s ease; /* Animación para el cambio de ancho */
+    transition: width 0.3s ease, transform 0.3s ease;
 }
 
-.sidebar a {
-    color: white;
-    text-decoration: none;
-    padding: 15px 20px;
-    font-size: 1.1rem;
-    font-family: Arial, sans-serif;
+.sidebar.collapsed {
+    width: 60px;
 }
 
-.sidebar a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+.sidebar.open {
+    width: 200px;
 }
 
-.sidebar a.active {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Estilos para el botón de alternancia */
 .toggle-sidebar {
     position: absolute;
     top: 10px;
-    right: -40px; /* Posiciona el botón fuera de la barra lateral a la derecha */
+    right: -40px;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     border: none;
@@ -40,37 +31,19 @@
     cursor: pointer;
     padding: 5px 10px;
     border-radius: 0 5px 5px 0;
-    transition: background-color 0.3s, right 0.3s;
+    transition: right 0.3s;
+    z-index: 3; /* Asegurar que esté encima de otros elementos */
 }
 
-/* Estilos para el botón cuando está plegado */
-.sidebar.collapsed .toggle-sidebar {
-    right: -40px; /* Mantiene el botón visible y ajustado al nuevo ancho */
-}
-
-.toggle-sidebar:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Estilos para el estado plegado */
-.sidebar.collapsed {
-    width: 60px; /* Ancho plegado */
-}
-
-.sidebar.collapsed a {
-    display: none; /* Oculta los enlaces cuando la barra lateral está plegada */
-}
-
-/* Estilos para el contenido principal */
-.main-content {
+.services {
     margin-left: 200px;
-    transition: margin-left 0.3s ease; /* Animación para el margen */
+    transition: margin-left 0.3s ease;
     min-height: 100vh;
     padding: 20px;
 }
 
-.main-content.shifted {
-    margin-left: 60px; /* Ajusta el margen cuando la barra está plegada */
+.services.shifted {
+    margin-left: 60px;
 }
 
 @media (max-width: 768px) {
@@ -82,52 +55,36 @@
         flex-direction: row;
         justify-content: center;
         padding: 10px 0;
-        transform: translateY(-100%); /* Oculta la barra por defecto */
-        transition: transform 0.3s ease; /* Animación para el desplazamiento */
+        transform: translateY(-100%); /* Oculta inicialmente */
+        background-color: rgba(0, 0, 0, 0.9); /* Ajuste de opacidad para visibilidad */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
     }
 
     .sidebar.open {
-        transform: translateY(0); /* Muestra la barra al abrir */
+        transform: translateY(0); /* Muestra al abrir */
+        height: auto; /* Asegura altura dinámica */
     }
 
     .sidebar.collapsed {
-        width: 100%;
-        height: 40px; /* Ajusta la altura para pantallas pequeñas */
+        height: 50px; /* Altura mínima visible */
+        transform: translateY(0); /* Siempre visible cuando colapsada */
         padding: 5px 0;
-        transform: translateY(0); /* Mantiene la barra visible para el botón */
     }
 
-    .sidebar a {
-        padding: 10px;
-        font-size: 1rem;
-    }
-
-    .sidebar.collapsed a {
-        display: none; /* Oculta los enlaces en pantallas pequeñas cuando está plegado */
-    }
-
-    .toggle-sidebar {
-        right: auto;
-        left: 50%;
-        transform: translateX(-50%);
-        top: 0; /* Posiciona el botón dentro de la barra */
-        border-radius: 5px;
-    }
-
-    .sidebar.collapsed .toggle-sidebar {
-        top: 0; /* Posiciona el botón dentro del área plegada */
-        left: 50%;
-        transform: translateX(-50%);
-        border-radius: 5px;
-    }
-
-    .main-content {
+    .services {
         margin-left: 0;
-        margin-top: 0; /* Por defecto, sin margen superior */
+        margin-top: 50px; /* Espacio para la barra colapsada */
         transition: margin-top 0.3s ease;
     }
 
-    .main-content.shifted {
-        margin-top: 40px; /* Ajusta el margen cuando la barra está abierta */
+    .services.shifted {
+        margin-top: 0; /* Sin margen cuando se abre */
+    }
+
+    .toggle-sidebar {
+        top: 5px;
+        right: auto;
+        left: 10px; /* Mover a la izquierda en móviles */
+        border-radius: 5px;
     }
 }
